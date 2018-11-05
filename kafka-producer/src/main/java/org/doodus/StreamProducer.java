@@ -10,6 +10,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.doodus.utils.Utils.fetchModelName;
 import static org.doodus.utils.Utils.getModelContext;
 
 @Slf4j
