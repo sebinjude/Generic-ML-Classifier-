@@ -1,0 +1,10 @@
+#Kafka Producer Config
+kafkaProducerConfig:
+  kafkaBrokers:
+    - localhost:9092
+  topic: test
+  clientId: client1
+  ackConfig: 0
+  retryConfig: 1
+  retryBackoffMsConfig: 5
+

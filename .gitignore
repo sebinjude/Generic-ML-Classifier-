@@ -1,0 +1,10 @@
+.idea/
+*.iml
+*.ipr
+*.iws
+dependency-reduced-pom.xml
+target
+server/data
+.DS_Store
+.project
+.settings/

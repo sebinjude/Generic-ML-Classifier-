@@ -1,0 +1,11 @@
+#Kafka Streaming Api Configs
+kafkaStreamConfig:
+  applicationId: test-read
+  brokerList:
+    - localhost:9092
+  readTopic: test
+  writeTopic: test-output
+
+#Model Loader Related Configs
+modelLoaderConfig:
+  modelPath: model1.pmml
