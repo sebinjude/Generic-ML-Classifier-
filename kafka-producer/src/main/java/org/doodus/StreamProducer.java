@@ -6,8 +6,6 @@ import org.doodus.kafka.KafkaWriter;
 import lombok.extern.slf4j.Slf4j;
 import org.yaml.snakeyaml.Yaml;
 import org.doodus.parser.CsvParser;
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,7 +24,7 @@ public class StreamProducer {
 
             ProducerConfig producerConfig;
             String inputFileName = args[0];
-            String modelName = StringUtils.split(StringUtils.split(StringUtils.trim(inputFileName),"_")[1],".")[0];
+            String modelName = fetchModelName(inputFileName);
             log.info("Input File Name : " + inputFileName);
             log.info("Infered Model Name : " + modelName);
             try(InputStream configStream = Files.newInputStream(Paths.get(args[1]))){
