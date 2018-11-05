@@ -20,6 +20,7 @@ public class StreamProducer {
     public static void main(String[] args) {
         if (args.length != 2) {
             log.error("Fatal error input files missing");
+            log.error("Use the command : java -jar kafka-producer-1.0-SNAPSHOT.jar input_model1.csv dev-config.yml");
         }
         else {
 
