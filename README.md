@@ -12,6 +12,7 @@ An ML pipeline that converts a given csv file into a Kafka stream. This stream i
 * Any null value in the test as well as train csv has been regarded as 0.
 * The headers of the input csv should be the same as the feature names used while training the model.
 * This ML Pipeline only supports ML models generated as _**PMML**_ _(Predictive Model Markup Language )_ files.
+* As I am giving more importance to the pipeline, I am not including the standalone python code used for the generation of the pmml file included in this project. (_Shall share upload to git if required_).
 
 ## Approach
 The project is split into 2 sub modules, one kafka-producer and stream-classifier.
@@ -33,12 +34,12 @@ The stream-classifier loads a PMML model and classifies the input data in **real
 * Sets up the pmml evaluator.
 * Sets up the kafka-stream to read from specified read topic and write to the write topic.
 * Making use of the streaming API of Kafka, each record in the input stream is mapped to the evaluator.
-* The output of the evaluator is combined with the input(for reference purposes) as is written to the configured write topic.
+* The output of the evaluator is combined with the input(for reference purposes) and is written to the configured write topic.
 
 
 ## Trade-Offs
-**Time Ordering Of Predictions** Though the Pipeline portrayed in this project is easily distributed by proportionally increasing the number of partitions in the Kafka topic and rolling out more instances,
-The data written to the output topic is not time-ordered.
+**Time Ordering Of Predictions** : Though the Pipeline portrayed in this project is easily distributed by proportionally increasing the number of partitions in the Kafka topic and rolling out more instances,
+the data written to the output topic is not time-ordered.
 ### How to ensure time ordering:
 1. Run the cluster in a single partition mode (Not at all advisable as it kill the parallelism)
 2. Add subsequent sorting layers to the pipeline. However this approach may hamper the real-time nature of the data.
@@ -46,11 +47,12 @@ Hence such a decision depends on the exact production requirements.
 
 ## Bottle Neck (*Excluding producer side bottle-necks*) 
 1. Though not exactly a bottle-neck, the current architecture dedicates one model per topic. Owing to the fact that PMML model loading is pretty fast (on an average), we could easily provide multi-model support.
-** This multi-model support can again be made much more performant by bringing in caching mechanism for the models. **
+**This multi-model support can again be made much more performant by bringing in caching mechanism for the models.**
 
 
 ## Future Imporvements In Order
-1. Add more TestCases.
+1. Add TestCases.
 2. Support OpenTSDB metrics (did not add due to time restrictions)
 3. Extend the model Loading mechanism (Bring in s3 or REST or any other method suitable to the production environment to replace simple file loading mechanism.)   
 4. Add more pre-processing layers. *(Again depends on production requirements. Hence at this stage I am not develing into data pre-processing layers as it would simply be over-engineering.)*
+
