@@ -44,7 +44,7 @@ The data written to the output topic is not time-ordered.
 2. Add subsequent sorting layers to the pipeline. However this approach may hamper the real-time nature of the data.
 Hence such a decision depends on the exact production requirements.
 
-##Bottle Neck (*Excluding producer side bottle-necks*)
+## Bottle Neck (*Excluding producer side bottle-necks*) 
 1. Though not exactly a bottle-neck, the current architecture dedicates one model per topic. Owing to the fact that PMML model loading is pretty fast (on an average), we could easily provide multi-model support.
 ** This multi-model support can again be made much more performant by bringing in caching mechanism for the models. **
 
@@ -53,3 +53,4 @@ Hence such a decision depends on the exact production requirements.
 1. Add more TestCases.
 2. Support OpenTSDB metrics (did not add due to time restrictions)
 3. Extend the model Loading mechanism (Bring in s3 or REST or any other method suitable to the production environment to replace simple file loading mechanism.)   
+4. Add more pre-processing layers. *(Again depends on production requirements. Hence at this stage I am not develing into data pre-processing layers as it would simply be over-engineering.)*
