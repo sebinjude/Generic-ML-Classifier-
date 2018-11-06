@@ -11,7 +11,7 @@ An ML pipeline that converts a given csv file into a Kafka stream. This stream i
 * However the Producer is modular and extensible.
 * Any null value in the test as well as train csv has been regarded as 0.
 * The headers of the input csv should be the same as the feature names used while training the model.
-* This ML Pipeline only supports
+* This ML Pipeline only supports ML models generated as _**PMML**_ _(Predictive Model Markup Language )_ files.
 
 ## Approach
 The project is split into 2 sub modules, one kafka-producer and stream-classifier.
