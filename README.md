@@ -12,7 +12,7 @@ An ML pipeline that converts a given csv file into a Kafka stream. This stream i
 * Any null value in the test as well as train csv has been regarded as 0.
 * The headers of the input csv should be the same as the feature names used while training the model.
 * This ML Pipeline only supports ML models generated as _**PMML**_ _(Predictive Model Markup Language )_ files.
-* As I am giving more importance to the pipeline, I am not including the standalone python code used for the generation of the pmml file included in this project. (_Shall share upload to git if required_).
+* As I am giving more importance to the pipeline, I am not including the standalone python code used for the generation of the pmml file included in this project. (_Shall upload to git if required_).
 
 ## Approach
 The project is split into 2 sub modules, one kafka-producer and stream-classifier.
